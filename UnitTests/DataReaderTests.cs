@@ -22,8 +22,8 @@ namespace UnitTests
         {
             var patientFeatures = DataReader.LoadCsv("Data/csvFeatures.dat");
 
-            var featuresCount = patientFeatures.GetLength(0);
-            var observationsCount = patientFeatures.GetLength(1);
+            var featuresCount = patientFeatures[0].Length;
+            var observationsCount = patientFeatures.Length;
 
             Assert.Equal(21, featuresCount);
             Assert.Equal(7200, observationsCount);

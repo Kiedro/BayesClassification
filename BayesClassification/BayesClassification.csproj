@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataReader.cs" />
+    <Compile Include="Models\BinaryFeature.cs" />
+    <Compile Include="Models\ContinuousFeature.cs" />
+    <Compile Include="Models\Feature.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

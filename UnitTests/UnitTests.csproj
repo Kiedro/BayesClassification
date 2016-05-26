@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataReaderTests.cs" />
-    <Compile Include="FeatureFabricTest.cs" />
+    <Compile Include="FeatureTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DataReaderTests.cs" />
     <Compile Include="FeatureTest.cs" />
+    <Compile Include="PatientCreatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

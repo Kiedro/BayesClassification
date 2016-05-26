@@ -10,10 +10,7 @@ namespace BayesClassification
     {
         static void Main(string[] args)
         {
-            var result = DataReader.LoadCsv("Data/csvResult.dat");
-            var features = DataReader.LoadCsv("Data/csvFeatures.dat");
+            
         }
-
-    
     }
 }

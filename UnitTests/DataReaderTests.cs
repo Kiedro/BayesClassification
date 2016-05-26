@@ -10,8 +10,8 @@ namespace UnitTests
         {
             var patientClasses = DataReader.LoadCsv("Data/csvResult.dat");
 
-            var classesCount = patientClasses.GetLength(0);
-            var observationsCount = patientClasses.GetLength(1);
+            var classesCount = patientClasses[0].Length;
+            var observationsCount = patientClasses.Length;
 
             Assert.Equal(3, classesCount);
             Assert.Equal(7200, observationsCount);

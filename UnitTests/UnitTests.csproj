@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassStatisticksTests.cs" />
     <Compile Include="DataReaderTests.cs" />
     <Compile Include="FeatureTest.cs" />
     <Compile Include="PatientCreatorTest.cs" />

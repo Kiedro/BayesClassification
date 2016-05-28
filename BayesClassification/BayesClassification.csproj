@@ -48,6 +48,7 @@
     <Compile Include="Models\ContinuousFeature.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\PatientsGroups.cs" />
     <Compile Include="PatientCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

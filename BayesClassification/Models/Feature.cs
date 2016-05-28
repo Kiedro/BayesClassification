@@ -11,22 +11,18 @@ namespace BayesClassification.Models
 
         public static Feature Create(int featureId, string value)
         {
-            Feature feature;
+            Feature feature = new Feature();
+            feature.Id = featureId;
+            feature.Value = double.Parse(value, CultureInfo.InvariantCulture);
+
             if (featureId == 1 || featureId >= 17)
             {
-                feature = new ContinuousFeature();
                 feature.Type = FeatureType.Continuous;
+                ContinousFeaturesRanges.AddIfMinMax(feature);
             }
             else
             {
-                feature = new BinaryFeature();
                 feature.Type = FeatureType.Binary;
-            }
-            feature.Id = featureId;
-            feature.Value = double.Parse(value, CultureInfo.InvariantCulture);
-            if (feature.Type == FeatureType.Continuous)
-            {
-                ContinousFeaturesRanges.AddIfMinMax(feature);
             }
             return feature;
         }

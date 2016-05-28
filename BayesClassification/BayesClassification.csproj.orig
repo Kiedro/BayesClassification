@@ -45,7 +45,12 @@
   <ItemGroup>
     <Compile Include="CalcBayes.cs" />
     <Compile Include="DataReader.cs" />
+<<<<<<< HEAD
     <Compile Include="CrossDataAlgorithm.cs" />
+    <Compile Include="Models\BinaryFeature.cs" />
+    <Compile Include="Models\ContinuousFeature.cs" />
+=======
+>>>>>>> c0a8289b6218ed9ec768b3a4d39f661394e00776
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="PatientsGroups.cs" />

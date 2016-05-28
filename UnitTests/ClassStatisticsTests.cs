@@ -58,7 +58,7 @@ namespace UnitTests
         {
             var classStat = new ClassStatistics(patients, Classification.Normal);
 
-            Assert.Equal(0.667, classStat.FeaturesStatisticks(2), 3);
+            Assert.Equal(0.667, classStat.FeaturesStatisticks(2, 1), 3);
         }
 
         [Fact]

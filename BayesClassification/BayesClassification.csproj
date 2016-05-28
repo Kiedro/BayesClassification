@@ -52,6 +52,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stat\ClassStatisticks.cs" />
+    <Compile Include="Stat\ContinousFeatureProbability.cs" />
+    <Compile Include="Stat\ContinousFeaturesRanges.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

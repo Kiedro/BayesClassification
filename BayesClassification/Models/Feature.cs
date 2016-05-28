@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using BayesClassification.Stat;
 
 namespace BayesClassification.Models
 {
@@ -23,7 +24,10 @@ namespace BayesClassification.Models
             }
             feature.Id = featureId;
             feature.Value = double.Parse(value, CultureInfo.InvariantCulture);
-
+            if (feature.Type == FeatureType.Continuous)
+            {
+                ContinousFeaturesRanges.AddIfMinMax(feature);
+            }
             return feature;
         }
     }
@@ -31,6 +35,6 @@ namespace BayesClassification.Models
     public enum FeatureType
     {
         Binary = 0,
-        Continuous
+        Continuous     
     }
 }

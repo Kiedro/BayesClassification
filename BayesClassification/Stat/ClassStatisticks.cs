@@ -68,11 +68,20 @@ namespace BayesClassification.Stat
             return features;
         }
 
-        public double FeaturesStatisticks(int id, double value = -1)
+        public double FeaturesStatisticks(int id, double value)
         {
             if (id > 1 && id < 17)
             {
+                if (value == 1)
+                {
                 return BinaryFeaturesStatisticks[id];
+                    
+                }
+                else if(value == 0)
+                {
+                    return 1 - BinaryFeaturesStatisticks[id];
+                }
+                throw new ArgumentOutOfRangeException();
             }
             else
             {

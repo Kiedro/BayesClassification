@@ -56,7 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassStatisticksTests.cs" />
+    <Compile Include="CalcBayesTest.cs" />
+    <Compile Include="ClassStatisticsTests.cs" />
     <Compile Include="CrossDataTest.cs" />
     <Compile Include="ContinousFeatureProbabilityTests.cs" />
     <Compile Include="DataReaderTests.cs" />

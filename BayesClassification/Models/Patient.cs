@@ -7,12 +7,13 @@ namespace BayesClassification
     {
         public Patient(Classification patientClass, IList<Feature> features)
         {
-            Classification = patientClass;
+            RealClassification = patientClass;
             Features = features;
         }
 
         public IList<Feature> Features { get; set; }
-        public Classification Classification { get; set; }
+        public Classification RealClassification { get; set; }
+        public Classification BayesClassification { get; set; }
     }
 }
 

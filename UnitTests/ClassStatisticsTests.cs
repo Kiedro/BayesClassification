@@ -7,12 +7,12 @@ using Xunit;
 
 namespace UnitTests
 {
-    public class ClassStatisticksTests
+    public class ClassStatisticsTests
     {
         private IList<Patient> patients;
         private IList<Feature> features;
         List<Feature> features2;
-        public ClassStatisticksTests()
+        public ClassStatisticsTests()
         {
             features = new List<Feature>
             {
@@ -48,7 +48,7 @@ namespace UnitTests
         [Fact]
         public void CreateClassStatisticks_PacientCollections_APrioriStat()
         {
-            var classStat = new ClassStatisticks(patients, Classification.Normal);
+            var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Assert.Equal(0.333, classStat.ClassProbability, 3);
         }
@@ -56,7 +56,7 @@ namespace UnitTests
         [Fact]
         public void CreateClassStatisticks_PacientCollectionWithFeatures_BinaryFeaturesStat()
         {
-            var classStat = new ClassStatisticks(patients, Classification.Normal);
+            var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Assert.Equal(0.667, classStat.FeaturesStatisticks(2), 3);
         }
@@ -65,7 +65,7 @@ namespace UnitTests
         public void CreateClassStatisticks_PacientCollectionWithFeatures_ContinuesFeaturesStat()
         {
             ContinousFeaturesRanges.Buckets = 10;
-            var classStat = new ClassStatisticks(patients, Classification.Normal);
+            var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Assert.Equal(0.667, classStat.FeaturesStatisticks(17, 0.25), 3);
         }
@@ -74,7 +74,7 @@ namespace UnitTests
         public void CreateClassStatisticks_PacientCollectionWithFeatures_Probability0()
         {
             ContinousFeaturesRanges.Buckets = 10;
-            var classStat = new ClassStatisticks(patients, Classification.Normal);
+            var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Assert.Equal(0, classStat.FeaturesStatisticks(17, 0.6), 3);
         }

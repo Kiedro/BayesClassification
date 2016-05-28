@@ -10,15 +10,12 @@ namespace BayesClassification.Models
     {
         public PatientsGroups(IList<Patient> patients)
         {
-            // Get the names into an array.
             int patients_count = patients.Count;
             Patient[] randPatients = new Patient[patients_count];
             patients.CopyTo(randPatients, 0);
 
-            // Randomize.
             Randomizer.Randomize(randPatients);
 
-            // Divide the names into groups.
             GroupA = new List<Patient>();
             for (int i = 0; i < patients_count/2; i++)
             {

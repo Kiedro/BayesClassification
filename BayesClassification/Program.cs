@@ -16,7 +16,9 @@ namespace BayesClassification
             var patientFeatures = DataReader.LoadCsv("Data/csvFeatures.dat");
             ContinousFeaturesRanges.Buckets = 10;
             IList<Patient> patients = PatientCreator.Create(patientClasses, patientFeatures);
-            var classStat = new ClassStatisticks(patients, Classification.Normal);
+
+            //var crossDataAlgorithm = new CrossDataAlgorithm(patients, 5);
+            //tutaj jeszcze dodać sprawdzanie wynikow
         }
 
     }

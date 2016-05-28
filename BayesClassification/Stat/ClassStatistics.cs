@@ -5,17 +5,17 @@ using BayesClassification.Models;
 
 namespace BayesClassification.Stat
 {
-    public class ClassStatisticks
+    public class ClassStatistics
     {
         public Classification Class { get; set; }
         public IList<Patient> Patients { get; set; }
         public double ClassProbability { get; set; }
-        public Dictionary<int, double> BinaryFeaturesStatisticks = new Dictionary<int, double>();
-        public IList<ContinousFeatureProbability> ContinousFeatureProbabilities = new List<ContinousFeatureProbability>();
+        private Dictionary<int, double> BinaryFeaturesStatisticks = new Dictionary<int, double>();
+        private IList<ContinousFeatureProbability> ContinousFeatureProbabilities = new List<ContinousFeatureProbability>();
 
-        public ClassStatisticks(IList<Patient> patients, Classification @class)
+        public ClassStatistics(IList<Patient> patients, Classification @class)
         {
-            this.Patients = patients.Where(x => x.Classification == @class).ToList();
+            this.Patients = patients.Where(x => x.RealClassification == @class).ToList();
             ClassProbability = (double)Patients.Count / patients.Count;
             this.Class = @class;
 

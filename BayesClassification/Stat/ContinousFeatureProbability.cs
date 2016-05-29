@@ -9,8 +9,8 @@
 
         public bool IsInRange(double value)
         {
-            
-            return value > RangeMin && value <= RangeMax || (value < RangeMax &&(RangeMin == 0 || RangeMin == ContinousFeaturesRanges.Ranges[Id].Min)) ;
+
+            return ((value > RangeMin || RangeMin == ContinousFeaturesRanges.Ranges[Id].Min) && value <= RangeMax);
         }
 
         public ContinousFeatureProbability(int id, double min, double max)

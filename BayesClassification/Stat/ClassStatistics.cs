@@ -68,26 +68,26 @@ namespace BayesClassification.Stat
             return features;
         }
 
-        public double FeaturesStatisticks(int id, double value)
+        public double FeaturesStatisticks(Feature feature)
         {
-            if (id > 1 && id < 17)
+            if (feature.Type == FeatureType.Binary)
             {
-                if (value == 1)
+                if (feature.Value == 1)
                 {
-                return BinaryFeaturesStatisticks[id];
+                return BinaryFeaturesStatisticks[feature.Id];
                     
                 }
-                else if(value == 0)
+                else if(feature.Value == 0)
                 {
-                    return 1 - BinaryFeaturesStatisticks[id];
+                    return 1 - BinaryFeaturesStatisticks[feature.Id];
                 }
                 throw new ArgumentOutOfRangeException();
             }
             else
             {
-                if (value < 0)
+                if (feature.Value < 0)
                     throw new ArgumentOutOfRangeException();
-                return GetContinousProbability(id, value);
+                return GetContinousProbability(feature.Id, feature.Value);
             }
         }
 

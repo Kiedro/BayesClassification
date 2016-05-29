@@ -1,4 +1,5 @@
-﻿using BayesClassification.Stat;
+﻿using BayesClassification.Models;
+using BayesClassification.Stat;
 using Xunit;
 
 namespace UnitTests
@@ -12,6 +13,7 @@ namespace UnitTests
         [InlineData(0, 0.1, 0)]
         public void IsInRange_ValueInRange_True(double min, double max, double value)
         {
+            ContinousFeaturesRanges.AddIfMinMax(new Feature { Id = 1, Value = 0 });
             var continousFeatureStat = new ContinousFeatureProbability(1, min, max);
 
             bool isInRange = continousFeatureStat.IsInRange(value);
@@ -25,6 +27,7 @@ namespace UnitTests
         [InlineData(0.5, 0.7, 0.71)]
         public void IsInRange_ValueOutOfRange_False(double min, double max, double value)
         {
+            ContinousFeaturesRanges.AddIfMinMax(new Feature {Id = 1, Value = 0});
             var continousFeatureStat = new ContinousFeatureProbability(1, min, max);
 
             bool isInRange = continousFeatureStat.IsInRange(value);

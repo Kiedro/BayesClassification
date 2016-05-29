@@ -59,7 +59,7 @@ namespace UnitTests
             var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Feature feature = new Feature {Id = 2, Value = 1, Type = FeatureType.Binary};
-            Assert.Equal(0.667, classStat.FeaturesStatisticks(feature), 3);
+            Assert.Equal(0.667, classStat.FeaturesProbabilities(feature), 3);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace UnitTests
             var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Feature feature = new Feature { Id = 17, Value = 0.25, Type = FeatureType.Continuous };
-            Assert.Equal(0.667, classStat.FeaturesStatisticks(feature), 3);
+            Assert.Equal(0.667, classStat.FeaturesProbabilities(feature), 3);
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace UnitTests
             var classStat = new ClassStatistics(patients, Classification.Normal);
 
             Feature feature = new Feature { Id = 17, Value = 0.6, Type = FeatureType.Continuous };
-            Assert.Equal(0, classStat.FeaturesStatisticks(feature), 3);
+            Assert.Equal(0, classStat.FeaturesProbabilities(feature), 3);
         }
 
     }

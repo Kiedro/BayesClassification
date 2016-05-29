@@ -53,6 +53,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stat\ClassStatistics.cs" />
+    <Compile Include="Stat\ConfusionMatrixCreator.cs" />
+    <Compile Include="Stat\ConfusionMatrixData.cs" />
     <Compile Include="Stat\ContinousFeatureProbability.cs" />
     <Compile Include="Stat\ContinousFeaturesRanges.cs" />
   </ItemGroup>

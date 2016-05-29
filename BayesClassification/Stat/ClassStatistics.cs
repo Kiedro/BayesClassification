@@ -10,7 +10,7 @@ namespace BayesClassification.Stat
         public Classification Class { get; set; }
         public IList<Patient> Patients { get; set; }
         public double ClassProbability { get; set; }
-        private Dictionary<int, double> BinaryFeaturesStatisticks = new Dictionary<int, double>();
+        private Dictionary<int, double> BinaryFeaturesProbabilities = new Dictionary<int, double>();
         private IList<ContinousFeatureProbability> ContinousFeatureProbabilities = new List<ContinousFeatureProbability>();
 
         public ClassStatistics(IList<Patient> patients, Classification @class)
@@ -33,7 +33,7 @@ namespace BayesClassification.Stat
                 if (Patients.First().Features.First(x => x.Id == i).Type == FeatureType.Binary)
                 {
                     double featureProbability = features.Where(x => x.Id == i).Sum(x => x.Value) / Patients.Count;
-                    BinaryFeaturesStatisticks.Add(i, featureProbability);
+                    BinaryFeaturesProbabilities.Add(i, featureProbability);
                 }
 
                 else
@@ -68,18 +68,18 @@ namespace BayesClassification.Stat
             return features;
         }
 
-        public double FeaturesStatisticks(Feature feature)
+        public double FeaturesProbabilities(Feature feature)
         {
             if (feature.Type == FeatureType.Binary)
             {
                 if (feature.Value == 1)
                 {
-                return BinaryFeaturesStatisticks[feature.Id];
+                return BinaryFeaturesProbabilities[feature.Id];
                     
                 }
                 else if(feature.Value == 0)
                 {
-                    return 1 - BinaryFeaturesStatisticks[feature.Id];
+                    return 1 - BinaryFeaturesProbabilities[feature.Id];
                 }
                 throw new ArgumentOutOfRangeException();
             }

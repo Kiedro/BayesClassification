@@ -17,8 +17,13 @@ namespace BayesClassification
             ContinousFeaturesRanges.Buckets = 10;
             IList<Patient> patients = PatientCreator.Create(patientClasses, patientFeatures);
 
-            //var crossDataAlgorithm = new CrossDataAlgorithm(patients, 5);
-            //tutaj jeszcze dodać sprawdzanie wynikow
+
+            var featureIds = new List<int>();
+            for (int i = 1; i <= 21; i++)
+            {
+                featureIds.Add(i);
+            }
+            var crossDataAlgorithm = new CrossDataAlgorithm(patients, 5, featureIds);
         }
 
     }

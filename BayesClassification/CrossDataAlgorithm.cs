@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BayesClassification.Models;
 using BayesClassification.Stat;
 
@@ -11,7 +6,6 @@ namespace BayesClassification
 {
     public class CrossDataAlgorithm
     {
-        private IList<int> _featureIds;
         private readonly int _actualRandomNmb;
 
         public ConfusionMatrixCreator ConfusionMatrixCreator;
@@ -19,9 +13,8 @@ namespace BayesClassification
         public IList<PatientsGroups> PatientsGroupsList;
         
 
-        public CrossDataAlgorithm(IList<Patient> patients, int repetitions, IList<int> featureIds)
-        {
-            _featureIds = featureIds;
+        public CrossDataAlgorithm(IList<Patient> patients, int repetitions)
+        { 
             ConfusionMatrixDatas = new List<ConfusionMatrixData>();
             ConfusionMatrixCreator = new ConfusionMatrixCreator();
 

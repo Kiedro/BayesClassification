@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BayesClassification.Models;
+﻿using System.Collections.Generic;
 using BayesClassification.Stat;
 
 namespace BayesClassification
@@ -15,15 +10,15 @@ namespace BayesClassification
             var patientClasses = DataReader.LoadCsv("Data/csvResult.dat");
             var patientFeatures = DataReader.LoadCsv("Data/csvFeatures.dat");
             ContinousFeaturesRanges.Buckets = 10;
-            IList<Patient> patients = PatientCreator.Create(patientClasses, patientFeatures);
+            int[] featuresIds = null;// new[] { 4, 5, 6, 20 };
+            IList<Patient> patients = PatientCreator.Create(patientClasses, patientFeatures, featuresIds);
 
+            var crossDataAlgorithm = new CrossDataAlgorithm(patients, 5);
 
-            var featureIds = new List<int>();
-            for (int i = 1; i <= 21; i++)
+            foreach (var confusionMatrixData in crossDataAlgorithm.ConfusionMatrixDatas)
             {
-                featureIds.Add(i);
+                ConfusionMatrixCreator.ShowConfusionMatrix(confusionMatrixData);
             }
-            var crossDataAlgorithm = new CrossDataAlgorithm(patients, 5, featureIds);
         }
 
     }

@@ -39,11 +39,33 @@ namespace BayesClassification.Stat
                 confusionMatrix, actualRandomNmb, groupLetter);
         }
 
-        public void ShowConfusionMatrix(ConfusionMatrixData confusionMatrixData)
+        public static void ShowConfusionMatrix(ConfusionMatrixData confusionMatrixData)
         {
-            
+            int sum = 0;
+            Console.WriteLine("----------------");
+            Console.WriteLine();
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    sum += confusionMatrixData.ConfusionMatrix[i, j];
+                    if (i == j)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.Write("{0:D5}   ", confusionMatrixData.ConfusionMatrix[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Suma pacjentów: {0}", sum);
+            Console.WriteLine();
         }
+
     }
 
-    
+
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BayesClassification.Models;
 using BayesClassification.Stat;
@@ -14,28 +15,45 @@ namespace BayesClassification
             _statistics = statistics;
         }
 
-        public void ClassificatePatients(IList<Patient> patients)
+        public void ClassificatePatients(IList<Patient> patients, LossFunctions lossFunction = LossFunctions.ZeroOne)
         {
             foreach (var patient in patients)
             {
-                var normalProb = GetBayesClassification(patient, Classification.Normal);
-                var hyperProb = GetBayesClassification(patient, Classification.Hyperfunction);
-                var subnormalProb = GetBayesClassification(patient, Classification.Subnormal);
+                IDictionary<Classification, double> pacientClassifications = new Dictionary<Classification, double>();
 
-                if (normalProb >= hyperProb && normalProb >= subnormalProb)
+                foreach (Classification @class in Enum.GetValues(typeof(Classification)))
                 {
-                    patient.BayesClassification = Classification.Normal;
+                    pacientClassifications.Add(@class, GetBayesClassification(patient, @class));
                 }
-                else if (hyperProb >= normalProb && hyperProb >= subnormalProb)
+
+                if (lossFunction == LossFunctions.ZeroOne)
                 {
-                    patient.BayesClassification = Classification.Hyperfunction;
+                    patient.BayesClassification = pacientClassifications.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
                 }
-                else if (subnormalProb >= normalProb && subnormalProb >= hyperProb)
+                else
                 {
-                    patient.BayesClassification = Classification.Subnormal;
+                    patient.BayesClassification = LijBayesClassifier(pacientClassifications);
                 }
             }
         }
+
+        public Classification LijBayesClassifier(IDictionary<Classification, double> pacientClassifications)
+        {
+            IDictionary < Classification, double> results = new Dictionary<Classification, double>();
+            foreach (Classification @class in Enum.GetValues(typeof(Classification)))
+            {
+                double lossValue = 0;
+                int loss;
+                for (int i = 0; i < 3; i++)
+                {
+                    loss = Math.Abs((int) @class - i);
+                    lossValue += loss*pacientClassifications[(Classification) i];
+                }
+                results[@class] = lossValue;
+            }
+            return results.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
+        }
+
 
         public double GetBayesClassification(Patient patient, Classification classification)
         {
@@ -48,6 +66,12 @@ namespace BayesClassification
             }
 
             return classificationResult;
+        }
+
+        public enum LossFunctions
+        {
+            ZeroOne = 0,
+            Lij
         }
     }
 }
